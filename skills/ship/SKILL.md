@@ -1,9 +1,7 @@
-<!-- SHIPWRIGHT:SKILL
+---
 name: ship
-trigger_keywords: ["ship", "deploy", "launch", "go-live", "distribution"]
-mode: execute
-phase: ship
--->
+description: Deploy the prototype to a live URL, wire up analytics, set up SEO basics, and create a plan to reach the first 10 users. Use when users say ship, deploy, launch, or run /ship.
+---
 
 # Ship
 

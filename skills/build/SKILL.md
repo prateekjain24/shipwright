@@ -1,9 +1,7 @@
-<!-- SHIPWRIGHT:SKILL
+---
 name: build
-trigger_keywords: ["build", "code", "implement", "tickets", "sprint"]
-mode: execute
-phase: build
--->
+description: Turn a shaped pitch into a working prototype. Break work into tickets, generate code in parallel worktrees, and run mid-build check-ins. Use when users say build, implement, or run /build.
+---
 
 # Build
 

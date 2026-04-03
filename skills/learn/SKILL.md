@@ -1,9 +1,7 @@
-<!-- SHIPWRIGHT:SKILL
+---
 name: learn
-trigger_keywords: ["learn", "cycle", "retrospective", "what's next", "how did it go", "check-in"]
-mode: reflect
-phase: learn
--->
+description: Run a retrospective after shipping. Review what happened, collect learnings, decide whether to reshape, pivot, or archive. Use when users say learn, retrospective, or run /learn.
+---
 
 # Learn
 

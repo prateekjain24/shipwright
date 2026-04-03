@@ -1,9 +1,7 @@
-<!-- SHIPWRIGHT:SKILL
+---
 name: shape
-trigger_keywords: ["shape", "idea", "pitch", "what to build"]
-mode: interview
-phase: shape
--->
+description: Help a builder think clearly about what to build. Ask reflection questions, run competitor research, validate demand, and produce a sharp pitch. Use when users have a new idea or run /shape.
+---
 
 # Shape
 

@@ -1,9 +1,7 @@
-<!-- SHIPWRIGHT:SKILL
+---
 name: shipwright
-trigger_keywords: ["shipwright", "idea", "import", "build", "ship", "learn"]
-mode: interview
-phase: orchestrator
--->
+description: The main orchestrator. Routes builders to the right phase (Shape, Build, Ship, Learn) based on their input. Handles /shipwright for full cycle and /shipwright import for existing projects.
+---
 
 # Shipwright -- The Orchestrator
 

@@ -1,9 +1,7 @@
-<!-- SHIPWRIGHT:SKILL
+---
 name: brain
-trigger_keywords: ["status", "where", "context", "brain"]
-mode: execute
-phase: brain
--->
+description: Show project status, sync context, and initialize new Shipwright projects. Use when users ask about status, progress, context, or run /brain.
+---
 
 # Brain
 
