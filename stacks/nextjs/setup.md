@@ -18,7 +18,7 @@ If you run `npx create-next-app@latest my-app`, it creates `my-app/my-app/`. To 
 ```bash
 mkdir my-project
 cd my-project
-npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias "@/*"
+npx create-next-app@latest . --typescript --tailwind --eslint --src-dir --import-alias "@/*"
 ```
 
 When prompted, accept the defaults for everything.
@@ -60,7 +60,7 @@ Create `.shipwright/config.json`:
 
 ## Key Choices Explained
 
-**App Router, not Pages Router.** App Router is the modern default. It uses `src/app/` and supports Server Components by default. Pages Router is deprecated.
+**App Router, not Pages Router.** App Router is the default since Next.js 14. The `--app` flag is no longer needed. It uses `src/app/` and supports Server Components by default. Pages Router is legacy.
 
 **src/ directory.** This keeps application code separate from config files at the root. Cleaner.
 

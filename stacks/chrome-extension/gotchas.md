@@ -99,7 +99,7 @@ v3 is stricter than v2. Know these limits:
 
 ### No Persistent Background Pages
 
-v2 had `background.page`. v3 has `service_worker` which unloads after inactivity (~5 mins).
+v2 had `background.page`. v3 has `service_worker` which unloads after 30 seconds of inactivity (Chrome 116+). Any event, API call, or message resets this timer. If a single operation takes longer than 5 minutes, the worker terminates.
 
 **Problem:** If your extension relies on a background script running 24/7, it doesn't work.
 
@@ -282,7 +282,7 @@ Useful for keeping popup and background in sync.
 
 ## Service Worker Unload
 
-The background service worker unloads after ~5 minutes of inactivity. If your extension wakes it (message, alarm, user event), it loads. If nothing happens for 5 mins, it's gone.
+The background service worker unloads after 30 seconds of inactivity (Chrome 116+). Any event, message, or API call resets the timer. Active WebSocket connections and `chrome.debugger` sessions keep the worker alive indefinitely.
 
 **This means:**
 
@@ -386,3 +386,25 @@ Don't build an extension that depends on running continuously. v3 service worker
 If you're tempted to use `setInterval` in the background, stop and use `chrome.alarms` instead. If you need real-time updates, listen to messages or tab events. Let the extension be idle. Wake it on demand.
 
 Extensions are not servers. Design them to be event-driven.
+
+---
+
+## Offscreen API
+
+Need DOM access from the background? Use the Offscreen API. It creates an invisible document with DOM access.
+
+```typescript
+// Create offscreen document
+await chrome.offscreen.createDocument({
+  url: 'offscreen.html',
+  reasons: ['CLIPBOARD'],
+  justification: 'Copy text to clipboard'
+});
+```
+
+**Limits:**
+- Only one offscreen document per extension at a time.
+- Only supports `chrome.runtime` for messaging. No other chrome APIs.
+- Must declare `"offscreen"` permission in manifest.
+- Good for: clipboard operations, audio playback, localStorage access.
+- Bad for: anything that needs chrome.tabs, chrome.storage, etc.

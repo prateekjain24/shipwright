@@ -223,6 +223,25 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;  // works
 
 If a public URL isn't showing up in the browser, check that it has the `NEXT_PUBLIC_` prefix.
 
+### NEXT_PUBLIC_ Variables Are Build-Time Only
+
+`NEXT_PUBLIC_` variables get inlined into the JavaScript bundle at build time. They are NOT read at runtime.
+
+This means:
+- Changing `NEXT_PUBLIC_` values after build has no effect
+- Each environment (staging, production) needs its own build
+- You can't "build once, deploy many" with `NEXT_PUBLIC_` variables
+
+If you need runtime config on the client, pass it from a Server Component:
+
+```typescript
+// app/page.tsx (Server Component -- reads env at runtime)
+export default function Page() {
+  const apiUrl = process.env.API_URL; // server-only, runtime
+  return <ClientComponent apiUrl={apiUrl} />;
+}
+```
+
 ## Image Optimization Quirks
 
 Next.js optimizes images automatically with `next/image`. But there are quirks.

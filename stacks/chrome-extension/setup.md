@@ -72,20 +72,22 @@ export default defineConfig({
 })
 ```
 
-### Option B: Plasmo (Simpler scaffolding)
+### Option B: WXT (Recommended for first-timers)
 
-Plasmo is a full framework. It hides Vite config, scaffolds the project, handles everything.
+WXT is an actively maintained extension framework. Smaller bundles (~400KB vs Plasmo's ~800KB), good docs, supports all browsers.
 
 ```bash
-npm install -g plasmo
-plasmo init my-extension
+npx wxt@latest init my-extension
 cd my-extension
 npm install
+npm run dev
 ```
 
-Plasmo auto-generates manifest.json and handles builds. Less boilerplate, less control.
+WXT auto-generates manifest.json, handles HMR, and supports Chrome, Firefox, Safari.
 
-**Recommendation**: Use Plasmo if this is your first extension. Use CRXJS if you need custom build config.
+**Note:** Plasmo was previously recommended but is now in maintenance mode with stalled development. Avoid for new projects.
+
+**Recommendation**: Use WXT if this is your first extension. Use CRXJS if you need maximum control over the build process.
 
 ---
 
@@ -150,16 +152,16 @@ Request minimum. The Web Store reviews this.
 
 ## Exact Setup Commands
 
-### Start with Plasmo (recommended for first-timers)
+### Start with WXT (recommended for first-timers)
 
 ```bash
-npm install -g plasmo
-plasmo init my-extension
+npx wxt@latest init my-extension
 cd my-extension
+npm install
 npm run dev
 ```
 
-Open `chrome://extensions` -> toggle Developer Mode -> Load Unpacked -> select dist/ folder. Auto-reloads on save.
+Open `chrome://extensions` -> toggle Developer Mode -> Load Unpacked -> select `.output/chrome-mv3-dev` folder. Auto-reloads on save.
 
 ### Start with Vite + CRXJS
 

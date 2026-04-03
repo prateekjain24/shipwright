@@ -110,7 +110,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
 
 **What it can't do:**
 - Access the DOM. No `document`, no `window.fetch` (use chrome.fetch).
-- Run continuously in v3. Gets unloaded after inactivity. Use alarms for repeated tasks.
+- Run continuously in v3. Gets unloaded after 30 seconds of inactivity (Chrome 116+). Any event, API call, or message resets this timer. Use alarms for repeated tasks.
 - Keep state in memory. Use `chrome.storage` for persistence.
 
 **Messaging pattern:**

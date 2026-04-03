@@ -23,31 +23,26 @@ Pick the right tech for your scale and needs. Astro for multi-page sites. Plain 
 ```bash
 mkdir landing-page && cd landing-page
 npm init -y
-npm install -D tailwindcss
-npx tailwindcss init -p
+npm install -D tailwindcss @tailwindcss/cli
 ```
+
+Note: Tailwind v4 uses CSS-first config. No `tailwind.config.js` needed by default. Import Tailwind in your CSS with `@import "tailwindcss";`.
 
 ### File structure
 
 ```
 landing-page/
   index.html           # Hero, waitlist form, CTA
-  style.css            # Tailwind output (generated)
+  style.css            # Tailwind source (import + custom styles)
+  dist/style.css       # Tailwind output (generated)
   script.js            # Form handling
-  tailwind.config.js
   package.json
 ```
 
-### tailwind.config.js
+### style.css
 
-```javascript
-export default {
-  content: ['./index.html'],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
+```css
+@import "tailwindcss";
 ```
 
 ### package.json scripts
@@ -55,8 +50,8 @@ export default {
 ```json
 {
   "scripts": {
-    "dev": "tailwindcss -i ./style.css -o ./dist/style.css --watch",
-    "build": "tailwindcss -i ./style.css -o ./dist/style.css"
+    "dev": "npx @tailwindcss/cli -i ./style.css -o ./dist/style.css --watch",
+    "build": "npx @tailwindcss/cli -i ./style.css -o ./dist/style.css"
   }
 }
 ```
@@ -72,7 +67,7 @@ Start with this skeleton. Fill in content for your product.
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Product Name</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body class="bg-white text-gray-900">
   <!-- Hero -->
@@ -219,7 +214,7 @@ import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   integrations: [tailwind()],
-  output: 'static',
+  output: 'server', // Required for API routes (waitlist form). Use 'static' only if no API routes needed.
 });
 ```
 

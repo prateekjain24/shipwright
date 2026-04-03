@@ -541,3 +541,88 @@ console.log('API key:', import.meta.env.RESEND_API_KEY?.slice(0, 10) + '...');
 8. Check logs after deploy. `vercel logs` or Netlify dashboard.
 9. Email from address must be your domain (for Resend).
 10. Rate limit form submissions to prevent spam.
+
+---
+
+## Resend Domain Verification (2026)
+
+Resend now requires DKIM + SPF setup before sending from your domain in production.
+
+**Steps:**
+1. Add your domain in Resend dashboard > Domain Management
+2. Add the DNS records Resend gives you (DKIM, SPF, DMARC)
+3. Wait for verification (usually a few minutes, sometimes hours)
+4. Test send to Gmail, Outlook, Yahoo before launch
+5. Monitor bounce rates in Resend dashboard (target: under 2%)
+
+Without domain verification, emails go to spam or don't send at all.
+
+---
+
+## Tailwind v4 Changes
+
+Tailwind v4 uses CSS-first config. No `tailwind.config.js` needed.
+
+**Old way (v3):**
+```bash
+npx tailwindcss init
+# Edit tailwind.config.js
+```
+
+**New way (v4):**
+```css
+/* style.css */
+@import "tailwindcss";
+```
+
+For Astro, use `@tailwindcss/vite` plugin instead of PostCSS:
+```bash
+npm install @tailwindcss/vite
+```
+
+If using the CDN for quick prototyping, the new URL is:
+```html
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+```
+
+---
+
+## Payment Links vs Checkout Sessions
+
+Stripe offers two approaches. Pick one, don't mix them.
+
+| Approach | Best for | Expiry | Code needed |
+|----------|----------|--------|-------------|
+| Payment Links | Static pricing, one product | Never expires | None (create in Stripe dashboard) |
+| Checkout Sessions | Dynamic pricing, custom flows | 24 hours | API integration required |
+
+For simple landing pages with fixed pricing, Payment Links are faster. Create in Stripe dashboard, embed the link. No webhook handling needed.
+
+---
+
+## Form Double Submission
+
+Users on slow connections click submit twice. This creates duplicate entries.
+
+**Fix:** Disable the button during submission AND debounce the handler:
+
+```javascript
+let submitting = false;
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  if (submitting) return;
+  submitting = true;
+  btn.disabled = true;
+  btn.textContent = 'Joining...';
+
+  try {
+    await fetch('/api/waitlist', { method: 'POST', ... });
+    btn.textContent = 'Done!';
+  } catch (err) {
+    btn.textContent = 'Try again';
+    btn.disabled = false;
+    submitting = false;
+  }
+});
+```
