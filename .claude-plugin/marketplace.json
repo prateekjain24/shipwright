@@ -6,16 +6,10 @@
   "plugins": [
     {
       "name": "shipwright",
+      "description": "Tell Shipwright what you want to build. It helps you think, then ships it. Idea to live URL in 60 minutes.",
       "source": ".",
-      "description": "Tell Shipwright what you want to build. It helps you think, then ships it.",
-      "version": "0.1.0",
-      "author": {
-        "name": "Prateek Jain"
-      },
-      "license": "MIT",
-      "keywords": ["product", "ship", "builder", "prototype", "deploy", "shape-up"],
-      "homepage": "https://github.com/prateekjain24/shipwright",
-      "repository": "https://github.com/prateekjain24/shipwright"
+      "category": "productivity",
+      "homepage": "https://github.com/prateekjain24/shipwright"
     }
   ]
 }
