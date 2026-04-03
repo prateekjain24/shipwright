@@ -1,10 +1,12 @@
 {
   "name": "shipwright",
+  "description": "Tell Shipwright what you want to build. It helps you think, then ships it. Idea to live URL in 60 minutes.",
   "version": "0.1.0",
-  "description": "Tell Shipwright what you want to build. It helps you think, then ships it.",
   "author": {
-    "name": "Prateek Jain"
+    "name": "Prateek Jain",
+    "url": "https://github.com/prateekjain24"
   },
-  "license": "MIT",
+  "homepage": "https://github.com/prateekjain24/shipwright",
+  "repository": "https://github.com/prateekjain24/shipwright",
   "keywords": ["product", "ship", "builder", "prototype", "deploy", "shape-up"]
 }
