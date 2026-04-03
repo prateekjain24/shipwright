@@ -1,0 +1,10 @@
+{
+  "name": "shipwright",
+  "version": "0.1.0",
+  "description": "Tell Shipwright what you want to build. It helps you think, then ships it.",
+  "author": {
+    "name": "Prateek Jain"
+  },
+  "license": "MIT",
+  "keywords": ["product", "ship", "builder", "prototype", "deploy", "shape-up"]
+}
