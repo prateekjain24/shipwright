@@ -1,56 +1,105 @@
 # Shipwright
 
-> Tell Shipwright what you want to build. It helps you think, then ships it.
+> Idea to live URL in 60 minutes. Not idea to code. Idea to users.
 
-Shipwright is an opinionated, open-source Claude Code plugin for PM-builders. It takes you from idea to learning -- through a structured cycle: think clearly, validate fast, build small, ship to users, learn from what happens.
+Shipwright is an open-source Claude Code plugin for builders who ship. It takes your idea through four phases -- think, build, deploy, learn -- and brings you back when it's time to decide what's next.
+
+No PRDs. No frameworks. No alignment decks. Just a working product with real users.
+
+## Who is this for?
+
+People who build side projects, micro-SaaS, and personal tools on evenings and weekends. You have ideas. You want to test them fast. You don't want to spend 3 hours on a PRD for something that might not matter.
+
+Shipwright is not a coding assistant. It's a thinking + shipping partner.
+
+## What happens when you run it
+
+```
+/shipwright "habit tracker for parents"
+```
+
+**Shape** (10 min) -- Shipwright asks you hard questions. Not a form. A conversation. It runs competitor research in the background. You end up with a sharp pitch or a killed idea. Both are wins.
+
+**Build** (30 min) -- Your pitch turns into tickets. Code agents work in parallel using git worktrees. Mid-build check-ins catch scope creep before it catches you.
+
+**Ship** (15 min) -- Deploy to a live URL. Analytics wired up. SEO basics done. A plan to get your first 10 users.
+
+**Learn** (5 min + 7 days later) -- Shipwright schedules a check-in. When you come back, it asks: what happened? What surprised you? Reshape, pivot, or archive. Then the cycle restarts.
 
 ## Install
 
 ```bash
-/plugin marketplace add prateekjain24/shipwright
-/plugin install shipwright@shipwright
+claude plugin add prateekjain24/shipwright
 ```
-
-## Usage
-
-```bash
-/shipwright "habit tracker for parents"
-```
-
-That's it. Shipwright asks you the right questions, helps you shape the idea, builds a working prototype, deploys it, and sets up a check-in so you actually learn from what happens.
 
 ## Commands
 
 | Command | What it does |
 |---------|-------------|
-| `/shipwright "idea"` | Full flow: Shape, Build, Ship, Learn |
-| `/shipwright import` | Onboard an existing project |
-| `/shape` | Jump to Shape phase |
-| `/build` | Jump to Build phase |
-| `/ship` | Jump to Ship phase |
-| `/learn` | Jump to Learn phase |
+| `/shipwright "idea"` | Full cycle: Shape, Build, Ship, Learn |
+| `/shipwright import` | Bring in an existing repo or product |
+| `/shape` | Rethink what you're building |
+| `/build` | Start (or resume) building |
+| `/ship` | Deploy and distribute |
+| `/learn` | Reflect on what happened |
 | `/brain` | Show project status |
 
-## How it works
+## Stacks (V1)
 
-Shipwright runs a 4-phase cycle:
+Shipwright picks the right tech based on what you're building.
 
-**Shape** -- Think clearly about what to build. Reflection questions, competitor research, validation. Output: a pitch you believe in (or a killed idea -- also a win).
+| Stack | Best for |
+|-------|----------|
+| Next.js | Web apps, SaaS, anything with a backend |
+| Landing Page | Waitlist tests, fake door validation, simple marketing sites |
+| Chrome Extension | Browser tools, productivity add-ons |
 
-**Build** -- Turn the pitch into a working prototype. Tickets, parallel code generation, mid-build check-ins.
+Each stack includes setup instructions, folder structure, deploy commands, and gotchas. Shipwright's code agents read these so you don't have to.
 
-**Ship** -- Get it live. Deploy, analytics, SEO, distribution plan. A URL you can share, not code on your laptop.
+## How it's different
 
-**Learn** -- Close the loop. What happened? What surprised you? What's next? Or is it time to move on?
+**From coding assistants** (Copilot, Cursor, Claude Code alone) -- These help you write code. Shipwright helps you decide what code is worth writing. Then writes it. Then ships it. Then brings you back to learn from it.
 
-## Docs
+**From PM tools** (the ones that generate PRDs and roadmaps) -- Those produce documents. Shipwright produces working software. Documents exist only to serve the build.
 
-Everything lives in [docs/](docs/):
+**From boilerplate generators** (create-next-app, Yeoman) -- These give you scaffolding. Shipwright gives you a live URL with analytics and a plan to get users.
 
-- [Architecture & Vision](docs/ARCHITECTURE.md) -- start here
-- [Personality](docs/personality.md) -- how Shipwright talks
-- [Behavioral Contract](docs/behavioral-contract.md) -- how Shipwright behaves
-- [Skill Contract](docs/skill-contract.md) -- how skills are structured
+## Architecture
+
+Shipwright is built as a Claude Code plugin with skills, agents, and stack components.
+
+```
+shipwright/
+  skills/        -- Phase logic (shape, build, ship, learn, brain)
+  agents/        -- Subagents (research, code gen, code review)
+  stacks/        -- Tech-specific instructions (nextjs, landing-page, chrome-extension)
+  docs/          -- Architecture decisions and contracts
+```
+
+Deep dive: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+
+## Design principles
+
+**Reflection before action.** Shipwright's most important job is asking the right questions. Not once at the start, but continuously throughout the build.
+
+**Small batches, tight loops.** Set a time budget. Shape just enough. Build a working prototype. Ship it. Learn from real usage. Repeat.
+
+**Stateful, not stateless.** Shipwright knows where you are, what you decided, and what's next. It pulls you back when you drift.
+
+**One path, plain English.** No framework buffet. No jargon. Shape, Build, Ship, Learn. That's it.
+
+## Roadmap
+
+| Version | Milestone |
+|---------|-----------|
+| **V1** | Idea to live URL in 60 minutes (3 stacks, full Shape/Build/Ship) |
+| **V2** | Full Learn cycle + 3 more stacks + hooks |
+| **V3** | Analytics-powered learning with MCP connectors |
+| **V4** | Multi-project support + community stacks |
+
+## Contributing
+
+This is early. If you ship things and want to help, open an issue or PR. Especially interested in new stack components and real-world usage reports.
 
 ## License
 
