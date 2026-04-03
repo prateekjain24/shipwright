@@ -1,0 +1,27 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "shipwright",
+  "description": "An opinionated plugin for PM-builders. Tell it what you want to build. It helps you think, then ships it.",
+  "owner": {
+    "name": "Prateek Jain"
+  },
+  "metadata": {
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "shipwright",
+      "source": ".",
+      "description": "Tell Shipwright what you want to build. It helps you think, then ships it.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Prateek Jain"
+      },
+      "license": "MIT",
+      "category": "productivity",
+      "tags": ["product", "ship", "builder", "prototype", "deploy", "shape-up"],
+      "homepage": "https://github.com/prateekjain24/shipwright",
+      "repository": "https://github.com/prateekjain24/shipwright"
+    }
+  ]
+}
