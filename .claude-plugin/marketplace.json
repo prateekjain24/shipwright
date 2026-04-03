@@ -1,15 +1,24 @@
 {
   "name": "shipwright",
   "owner": {
-    "name": "Prateek Jain"
+    "name": "Prateek Jain",
+    "email": "prateekjain24@outlook.com"
   },
   "plugins": [
     {
       "name": "shipwright",
+      "source": "./",
       "description": "Tell Shipwright what you want to build. It helps you think, then ships it. Idea to live URL in 60 minutes.",
-      "source": ".",
+      "version": "0.1.0",
+      "author": {
+        "name": "Prateek Jain",
+        "email": "prateekjain24@outlook.com"
+      },
+      "keywords": ["product", "ship", "builder", "prototype", "deploy", "shape-up"],
       "category": "productivity",
-      "homepage": "https://github.com/prateekjain24/shipwright"
+      "homepage": "https://github.com/prateekjain24/shipwright",
+      "repository": "https://github.com/prateekjain24/shipwright",
+      "license": "MIT"
     }
   ]
 }
