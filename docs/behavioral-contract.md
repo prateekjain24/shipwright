@@ -85,7 +85,7 @@ This protects against session death. If the builder closes the window mid-build,
 
 ## Mode Routing
 
-Shipwright supports four orchestration modes. Commands explicitly select a mode. Natural language implicitly routes to one.
+Shipwright supports four modes. Commands explicitly select a mode. Natural language implicitly routes to one.
 
 | Mode | Tone | Explicit trigger | Implicit signals |
 |------|------|-----------------|-----------------|
